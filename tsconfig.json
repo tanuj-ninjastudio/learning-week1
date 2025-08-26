@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src", // where your TS files live
+    "outDir": "./dist", // where compiled JS will go
+
+    "module": "NodeNext", // supports modern Node.js ESM
+    "target": "ESNext", // latest JS features
+    "lib": ["ESNext"], // include modern APIs
+    "types": ["node"], // node.js type definitions
+
+    "sourceMap": true, // helpful for debugging
+    "strict": true, // enable all strict checks
+    "esModuleInterop": true, // smoother import/export
+    "skipLibCheck": true, // faster builds
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"], // compile only from src
+  "exclude": ["node_modules"] // ignore node_modules
+}
