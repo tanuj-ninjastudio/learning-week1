@@ -1,22 +1,25 @@
-import { deleteData, readData, writeData } from "./fileHandler.js";
+import { appendData, deleteLast, readData } from "./fileHandler.js";
 
-// cli args
+const FILE = "data.json"; // Now just specify file name
+
+// CLI args
 const args = process.argv.slice(2);
 const cmd = args[0];
 
 if (cmd === "read") {
-  console.log(readData());
+  console.log(readData(FILE));
 } else if (cmd === "write") {
   const text = args[1];
   if (!text) {
     console.log("give some text to write");
     process.exit(1);
   }
-  writeData(text);
+  appendData(FILE, { text, time: new Date().toISOString() });
 } else if (cmd === "delete") {
-  deleteData();
+  deleteLast(FILE);
 } else {
   console.log("usage:");
-  console.log("  ts-node src/app.ts read");
-  console.log('  ts-node src/app.ts write "something"');
+  console.log('  node --loader ts-node/esm src/app.ts write "hello Tanuj"');
+  console.log("  node --loader ts-node/esm src/app.ts read");
+  console.log("  node --loader ts-node/esm src/app.ts delete");
 }
